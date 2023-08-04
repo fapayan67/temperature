@@ -16,6 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from mediciones.views import (
+    AreaAPILisView,
+    AreaAPICreateView,
+    RegionAPILisView,
+    MeasurementsAPILisView,
+    MeasurementsAPICreateView,
+)
+
+
 urlpatterns = [
+    path('areas/', AreaAPILisView.as_view(), name='areas-list'),
+    path('areas/create/', AreaAPICreateView.as_view(), name='areas-create'),
+    path('regions/', RegionAPILisView.as_view(), name='regions-list'),
+    path('measurements/', MeasurementsAPILisView.as_view(), name='measurements-list'),
+    path('measurements/create/', MeasurementsAPICreateView.as_view(), name='measurements-create'),
     path('admin/', admin.site.urls),
 ]
